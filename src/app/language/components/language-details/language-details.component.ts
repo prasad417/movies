@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import { Language } from '../../models/language.interface';
 
 @Component({
   selector: 'app-language-details',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./language-details.component.scss']
 })
 export class LanguageDetailsComponent implements OnInit {
+  @Input()
+  detail: Language;
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }
