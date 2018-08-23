@@ -1,3 +1,5 @@
-<mat-list>
-    <a [routerLink]="['/artists', detail.id]" class="text-capitalize">{{ detail.name }}</a>
-</mat-list>
+<mat-card>
+    <mat-card-title>
+        <a [routerLink]="['/artists', detail.id]">{{ detail.name }}</a>
+    </mat-card-title>
+</mat-card>

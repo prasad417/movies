@@ -1,3 +1,11 @@
-<p>
-  movie-details works!
-</p>
+<mat-card>
+    <mat-card-title>
+        <a href="{{ detail.movieURL }}">{{ detail.movieName }}</a>
+    </mat-card-title>
+    <mat-card-content>
+            <div class="details">Actor: {{ detail.artistName }}</div>
+            <div class="details">Actress: {{ detail.actressName }}</div>
+            <div class="details">Director: {{ detail.director }}</div>
+            <div class="details">Genre: {{ detail.genre }}</div>
+    </mat-card-content>
+</mat-card>

@@ -1,3 +1,7 @@
-<p>
-  artist-details works!
-</p>
+<mat-card>
+  <mat-card-title>
+    <a [routerLink]="['/artistmovies', detail.id]" class="text-capitalize">
+      <img src="{{ detail.logoURL }}" alt="{{ detail.artistName }}"> <br>{{ detail.artistName }}
+    </a>
+  </mat-card-title>
+</mat-card>

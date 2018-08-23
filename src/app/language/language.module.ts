@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
+import { MatCardModule } from '../../../node_modules/@angular/material';
 
 // Containers
 import { LanguageComponent } from './containers/language/language.component';
@@ -11,7 +12,6 @@ import { LanguageDetailsComponent } from './components/language-details/language
 
 // Service
 import { LanguageService } from './language.service';
-import { MatListModule } from '../../../node_modules/@angular/material';
 
 const routes: Routes = [
   {
@@ -33,7 +33,7 @@ const routes: Routes = [
     CommonModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    MatListModule
+    MatCardModule
   ],
   declarations: [
     LanguageComponent,

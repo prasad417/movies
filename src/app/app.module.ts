@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
 import { LanguageModule } from './language/language.module';
+import { ArtistModule } from './artist/artist.module';
+import { MovieModule } from './movie/movie.module'
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,10 +20,6 @@ import { RegistrationDetailsComponent } from './user-registration/components/reg
 import { RegistrationComponent } from './user-registration/containers/registration/registration.component';
 import { LoginDetailsComponent } from './user-login/components/login-details/login-details.component';
 import { LoginComponent } from './user-login/containers/login/login.component';
-import { ArtistDetailsComponent } from './artist/components/artist-details/artist-details.component';
-import { ArtistComponent } from './artist/containers/artist/artist.component';
-import { MovieComponent } from './movie/containers/movie/movie.component';
-import { MovieDetailsComponent } from './movie/components/movie-details/movie-details.component';
 import { SearchDetailsComponent } from './search/components/search-details/search-details.component';
 import { SearchComponent } from './search/containers/search/search.component';
 
@@ -35,10 +33,6 @@ import { SearchComponent } from './search/containers/search/search.component';
     RegistrationComponent,
     LoginDetailsComponent,
     LoginComponent,
-    ArtistDetailsComponent,
-    ArtistComponent,
-    MovieComponent,
-    MovieDetailsComponent,
     SearchDetailsComponent,
     SearchComponent
   ],
@@ -56,6 +50,8 @@ import { SearchComponent } from './search/containers/search/search.component';
     MatListModule,
     // Custom modules
     LanguageModule,
+    ArtistModule,
+    MovieModule,
     // Routing modules
     AppRoutingModule
   ],

@@ -12,3 +12,23 @@ body {
     margin: 0;
     font-family: 'Roboto', sans-serif; 
 }
+
+a {
+    text-transform: capitalize;
+    text-decoration: none;
+    text-align: center;
+    color: rgb(88, 84, 84);
+}
+
+mat-card {
+    text-align: center;
+    margin: 2px;
+}
+
+mat-card-title a {
+    color: deepskyblue;
+}
+
+.details {
+    text-transform: capitalize;
+}
