@@ -13,7 +13,7 @@ import { MovieService } from './../../../movie/movie.service';
 export class SearchComponent implements OnInit {
 
   movies: Movie[] = [];
-  queryField: FormControl = new FormControl();
+  queryField: FormControl = new FormControl('');
 
   constructor(private movieService: MovieService) { }
 

@@ -1,11 +1,12 @@
 <section class="filter-wrapper">
     <div class="keyword-wrapper">
-      <h1>Search for your favorite movie...</h1>
-      <input [formControl]="queryField" type="text" id="keyword" placeholder="search for movies..." autofocus/>
-     </div>
-    <mat-card>
-      <mat-card-title *ngFor="let result of movies">
+      <h3>Search for your favorite movie...</h3>
+      <input [formControl]="queryField" type="text" id="keyword" placeholder="Search for movies..." autofocus style="width: 100%;"/>
+     
+    <mat-card *ngFor="let result of movies">
+      <mat-card-title>
         <a class="movie-name" href="{{ result.movieURL }}">{{ result.movieName }}</a>
       </mat-card-title>
    </mat-card>
+  </div>
 </section>

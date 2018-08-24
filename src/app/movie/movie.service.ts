@@ -12,7 +12,7 @@ const Movies_API: string = environment.apiUrl;
 @Injectable()
 export class MovieService {
 
-  constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) {}
 
     search(queryString: string) {
         const _URL = `${Movies_API}/movies?filter[where][movieName][regexp]=/^${queryString}/i`;
