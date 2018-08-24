@@ -7,7 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { LanguageModule } from './language/language.module';
 import { ArtistModule } from './artist/artist.module';
-import { MovieModule } from './movie/movie.module'
+import { MovieModule } from './movie/movie.module';
+import { SearchModule } from './search/search.module';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -20,8 +21,6 @@ import { RegistrationDetailsComponent } from './user-registration/components/reg
 import { RegistrationComponent } from './user-registration/containers/registration/registration.component';
 import { LoginDetailsComponent } from './user-login/components/login-details/login-details.component';
 import { LoginComponent } from './user-login/containers/login/login.component';
-import { SearchDetailsComponent } from './search/components/search-details/search-details.component';
-import { SearchComponent } from './search/containers/search/search.component';
 
 @NgModule({
   declarations: [
@@ -32,9 +31,7 @@ import { SearchComponent } from './search/containers/search/search.component';
     RegistrationDetailsComponent,
     RegistrationComponent,
     LoginDetailsComponent,
-    LoginComponent,
-    SearchDetailsComponent,
-    SearchComponent
+    LoginComponent
   ],
   imports: [
     // Angular modules
@@ -52,6 +49,7 @@ import { SearchComponent } from './search/containers/search/search.component';
     LanguageModule,
     ArtistModule,
     MovieModule,
+    SearchModule,
     // Routing modules
     AppRoutingModule
   ],

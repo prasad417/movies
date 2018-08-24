@@ -14,6 +14,16 @@ export class MovieService {
 
   constructor(private http: HttpClient) {}
 
+    search(queryString: string) {
+        const _URL = `${Movies_API}/movies?filter[where][movieName][regexp]=/^${queryString}/i`;
+        return this.http
+            .get(_URL);
+            // .pipe(
+            //     map((response: Response) => response),
+            //     catchError(this.errorHandler)
+            // );
+    }
+
     getMovies(id: number): Observable<Movie[]> {
         return this.http
             .get<Movie[]>(`${Movies_API}/artists/${id}/movies`)
