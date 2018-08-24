@@ -1,3 +1,65 @@
-<p>
-  registration works!
-</p>
+<form novalidate [formGroup]="user" (ngSubmit)="onSubmit(user)">
+  <label>
+    First Name:
+    <input type="text" formControlName="firstName" placeholder="Enter first name">
+  </label>
+  <br>
+  <label>
+    Middle Name:
+    <input type="text" formControlName="middleName" placeholder="Enter middle name">
+  </label>
+  <br>
+  <label>
+    Last Name:
+    <input type="text" formControlName="lastName" placeholder="Enter last name">
+  </label>
+  <br>
+  <label>
+    Phone Number:
+    <input type="text" formControlName="phoneNumber" placeholder="Enter 1234567890">
+  </label>
+  <br>
+    <!-- <div formGroupName="address"> -->
+  <label>
+    Address line1:
+    <input type="text" formControlName="addressLine1" placeholder="Enter addressline1">
+  </label>
+  <br>
+  <label>
+    Address line2:
+    <input type="text" formControlName="addressLine2" placeholder="Enter addressline2">
+  </label>
+  <br>
+  <label>
+    City:
+    <input type="text" formControlName="city" placeholder="Enter city you live">
+  </label>
+  <br>
+  <label>
+     State:
+      <input type="text" formControlName="state" placeholder="Enter state you reside">
+      <!-- <mat-select formControlName="state" placeholder="Select me">
+          <mat-option value="Minnesota">Minnesota</mat-option>
+        </mat-select> -->
+  </label>
+  <br>
+  <label>
+    Zip Code:
+    <input type="text" formControlName="zipcode" placeholder="Enter zipcode ">
+  </label>
+      <!-- </div> -->
+  <br>
+  <label>
+    Email:
+    <input type="text" formControlName="email" placeholder="Enter eamil address">
+  </label>
+  <br>
+  <label>
+    Password:
+    <input type="password" formControlName="password" placeholder="Enter password">
+  </label>
+  <br>
+  <button type="submit" >Submit</button>
+  <button (click)="reset()">Cancel</button>
+  <!-- [disabled]="!profileForm.valid" -->
+  </form>

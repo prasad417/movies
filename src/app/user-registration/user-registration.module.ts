@@ -8,6 +8,7 @@ import { UserRegistrationService } from './user-registration.service';
 
 import { RegistrationComponent } from './containers/registration/registration.component';
 import { RegistrationDetailsComponent } from './components/registration-details/registration-details.component';
+import { MatSelectModule } from '../../../node_modules/@angular/material';
 
 const routes: Routes = [
   {
@@ -21,7 +22,8 @@ const routes: Routes = [
     CommonModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule
   ],
   declarations: [
     RegistrationComponent,
