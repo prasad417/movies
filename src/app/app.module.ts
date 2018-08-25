@@ -19,6 +19,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 import { HomeComponent } from './home/home.component';
 import { BackgroundComponent } from './background/background.component';
+import { NgHttpLoaderModule } from 'ng-http-loader';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { BackgroundComponent } from './background/background.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    NgHttpLoaderModule,
     // Custom modules
     LanguageModule,
     ArtistModule,
