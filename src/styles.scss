@@ -32,3 +32,23 @@ mat-card-title a {
 .details {
     text-transform: capitalize;
 }
+
+button:not(:last-child) {
+    margin-right: 20px;
+}
+
+.container {
+    padding: 10px 50px 10px;
+}
+
+.form {
+    width: 100%;
+}
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+}
+.form-input {
+    width: 100%;
+}

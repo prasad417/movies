@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validator, Validators } from '@angular/forms';
-
+import { Router } from '@angular/router';
 import { User } from './../../models/user.interface';
+
+import { UserRegistrationService } from './../../user-registration.service';
+import { first } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-registration',
@@ -12,16 +16,7 @@ export class RegistrationComponent implements OnInit {
 
   user: FormGroup;
 
-  onSubmit({ value, valid }: { value: User, valid: boolean }) {
-    console.log(value, valid);
-  }
-
-  reset() {
-    this.user.reset();
-    console.log('Form reset complete');
-  }
-
-  constructor() { }
+  constructor(private userRegistration: UserRegistrationService, private router: Router) {}
 
   ngOnInit() {
     this.user = new FormGroup({
@@ -45,10 +40,29 @@ export class RegistrationComponent implements OnInit {
       //   state: new FormControl('', [Validators.required]),
       //   zip: new FormControl('', [Validators.required])
       // }),
-      email: new FormControl('', [Validators.required, Validators.pattern('^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$')]),
+      // tslint:disable-next-line:max-line-length
+      email: new FormControl('', [Validators.required, Validators.pattern('^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')]),
       password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(20),
         Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})')])
     });
+  }
+
+  onSubmit({ value, valid }: { value: User, valid: boolean }) {
+    console.log(value, valid);
+    this.userRegistration.register(value)
+      .pipe(first())
+      .subscribe(
+        data => {
+          this.router.navigate(['/login']);
+        },
+        error => {
+            console.log();
+        }
+      );
+  }
+
+  reset() {
+    this.user.reset();
   }
 
 }
