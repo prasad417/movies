@@ -1,6 +1,6 @@
 <div class="container">
 <h3>User Registration</h3>
-<form [formGroup]="user" (ngSubmit)="onSubmit(user.value)" class="form">
+<form [formGroup]="user" (ngSubmit)="onSubmit(user)" class="form">
   <div class="form-container">
     <mat-form-field class="form-input">
       <input matInput type="text" formControlName="firstName" placeholder="First name *">

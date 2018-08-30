@@ -157,7 +157,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   onSubmit({ value, valid }: { value: User, valid: boolean }) {
-    console.log(value, valid);
+    // console.log(value, valid);
     this.userRegistration.register(value)
       .pipe(first())
       .subscribe(
