@@ -151,7 +151,7 @@ export class RegistrationComponent implements OnInit {
         Validators.required,
         Validators.minLength(8),
         Validators.maxLength(25),
-        Validators.pattern('/(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*-_])[\w!@#$%^&*-_]{8,}$/')
+        Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&#^-_])[A-Za-z\d$@$!%*?&#^-_].{8,}')
       ]))
     });
   }
