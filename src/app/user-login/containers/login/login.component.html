@@ -1,3 +1,31 @@
-<p>
-  login works!
-</p>
+<div class="container">
+  <h3>Login</h3>
+  <form [formGroup]="userlogin" (ngSubmit)="onSubmit(userlogin)" class="form">
+    <div class="form-container">
+      <mat-form-field class="form-input">
+        <input matInput type="text" formControlName="email" placeholder="Email address *">
+        <mat-error *ngFor="let validation of validation_messages.email">
+          <mat-error class="error-message" *ngIf="userlogin.get('email').hasError(validation.type) && (userlogin.get('email').dirty || userlogin.get('email').touched)">{{validation.message}}</mat-error>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-input">
+        <input matInput type="password" formControlName="password" placeholder="Password *">
+        <mat-error *ngFor="let validation of validation_messages.password">
+          <mat-error class="error-message" *ngIf="userlogin.get('password').hasError(validation.type) && (userlogin.get('password').dirty || userlogin.get('password').touched)">{{validation.message}}</mat-error>
+        </mat-error>
+      </mat-form-field>
+      <div class='formbutton'>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!userlogin.valid"><b>Login</b></button>
+        <!-- <button mat-raised-button color="primary" (click)="reset()"><b>Reset</b></button> -->
+      </div>
+    </div>
+    </form>
+
+    <!-- <form [formGroup]="forgotpassword" (ngSubmit)="forgotPassword(forgotpassword)" class="form">
+      <div class="form-container">
+        <div class='formbutton'>
+          <button mat-raised-button color="primary" type="submit"><b>Forgot Password?</b></button>
+        </div>
+      </div>
+      </form> -->
+  </div>
