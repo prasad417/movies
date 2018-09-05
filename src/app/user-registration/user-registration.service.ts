@@ -12,7 +12,7 @@ export class UserRegistrationService {
   constructor(private http: HttpClient) { }
 
   register(user: User) {
-    return this.http.post(`${USER_API}/useraccountinfos`, user);
+    return this.http.post(`${USER_API}/useraccount`, user);
   }
 
 }
