@@ -3,6 +3,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Login } from './../../models/login.interface';
 import { Router } from '@angular/router';
 
+import { UserLoginService } from './../../user-login.service';
+
+import { first } from 'rxjs/operators';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -25,7 +29,7 @@ export class LoginComponent implements OnInit {
     ]
   };
 
-  constructor() { }
+  constructor(private userLoginService: UserLoginService) { }
 
   ngOnInit() {
     this.userlogin = new FormGroup({
@@ -46,7 +50,9 @@ export class LoginComponent implements OnInit {
 
   onSubmit({ value, valid }: { value: Login, valid: boolean }) {
     // console.log(value, valid);
-    console.log('Login will be coming soon.');
+    //https://stackblitz.com/edit/angular-6-registration-login-example?file=app%2Flogin%2Flogin.component.ts
+    this.userLoginService.login(value.email, value.password);
+    // console.log('Login will be coming soon.');
   }
 
 }
