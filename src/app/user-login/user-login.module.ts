@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 
 import { UserLoginService } from './user-login.service';
+import { AuthService } from './auth.service';
 
 import { LoginComponent } from './containers/login/login.component';
 import { LoginDetailsComponent } from './components/login-details/login-details.component';
@@ -33,7 +34,8 @@ const routes: Routes = [
     LoginDetailsComponent
   ],
   providers: [
-    UserLoginService
+    UserLoginService,
+    AuthService
   ]
 })
 export class UserLoginModule { }

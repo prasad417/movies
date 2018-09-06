@@ -1,29 +1,30 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { environment } from '../../environments/environment.prod';
 
 import { map, catchError } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 const USER_API: string = environment.apiUrl;
 
 @Injectable()
 export class UserLoginService {
 
+  headers = new HttpHeaders({
+    'Content-Type' : 'application/json',
+  });
   constructor(private http: HttpClient) { }
 
-  login(username: string, password: string) {
-    this.http.post<any>(`${USER_API}/Users/login`, { username: username, password: password })
-      .pipe(
-        map(user => {
-          console.log(user);
-          // login successful if there's a token in the response
-          if (user && user.token) {
-              // store user details and jwt token in local storage to keep user logged in between page refreshes
-              localStorage.setItem('currentUser', JSON.stringify(user));
-          }
-          return user;
-        })
-      );
+  login(username: string, password: string): Observable<any> {
+    return this.http.post(`${USER_API}/useraccount/login?include=User`, { email: username, password: password }, {headers: this.headers})
+            .pipe(
+              map((response: Response) => response),
+              catchError(this.errorHandler)
+            );
+  }
+
+  errorHandler(error: HttpErrorResponse) {
+    return Observable.throw(error.message || 'Server Error');
   }
 
 }

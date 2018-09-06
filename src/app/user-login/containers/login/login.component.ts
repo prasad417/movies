@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 
 import { UserLoginService } from './../../user-login.service';
 
-import { first } from 'rxjs/operators';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     ]
   };
 
-  constructor(private userLoginService: UserLoginService) { }
+  constructor(private userLoginService: UserLoginService, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.userlogin = new FormGroup({
@@ -49,10 +49,23 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit({ value, valid }: { value: Login, valid: boolean }) {
-    // console.log(value, valid);
-    //https://stackblitz.com/edit/angular-6-registration-login-example?file=app%2Flogin%2Flogin.component.ts
-    this.userLoginService.login(value.email, value.password);
-    // console.log('Login will be coming soon.');
+    this.userLoginService.login(value.email, value.password)
+    .subscribe(
+      data => {
+        // now we need save user token to the cookie. or now i just simply save to Local storage.
+        // https://github.com/tabvn/angular-blog
+        const user = data.user;
+        this.authService.setUser(user);
+
+        const token = data.id;
+
+        this.authService.setToken(token);
+
+        // now we need redirect to profile user if they logged in.
+        this.router.navigate(['']);
+      }, err => {
+        console.log(err);
+      });
   }
 
 }
