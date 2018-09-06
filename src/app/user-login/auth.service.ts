@@ -15,17 +15,14 @@ export class AuthService {
     this.onAuthChange$.next(user);
     const userString = JSON.stringify(user);
     localStorage.setItem('currentUser', userString);
-
   }
 
   getCurrentUser(): User {
     const userString = localStorage.getItem('currentUser');
     if (!isNullOrUndefined(userString)) {
-        const user: User = JSON.parse(userString);
-
+      const user: User = JSON.parse(userString);
       return user;
     } else {
-
       return null;
     }
   }
