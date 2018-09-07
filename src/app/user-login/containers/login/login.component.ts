@@ -63,7 +63,6 @@ export class LoginComponent implements OnInit {
 
         // now we need redirect to profile user if they logged in.
         this.router.navigate(['']);
-        window.location.reload();
       }, err => {
         console.log(err);
       });
