@@ -1,3 +1,4 @@
+import { HomeComponent } from './../../../home/home.component';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Login } from './../../models/login.interface';
@@ -62,7 +63,7 @@ export class LoginComponent implements OnInit {
         this.authService.setToken(token);
 
         // now we need redirect to profile user if they logged in.
-        this.router.navigate(['']);
+        this.router.navigateByUrl('/account');
         window.location.reload(true);
       }, err => {
         console.log(err);

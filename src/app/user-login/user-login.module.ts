@@ -10,7 +10,7 @@ import { LoginComponent } from './containers/login/login.component';
 import { LoginDetailsComponent } from './components/login-details/login-details.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule } from '../../../node_modules/@angular/material';
+import { MatButtonModule, MatCardModule } from '../../../node_modules/@angular/material';
 import { MatInputModule } from '@angular/material/input';
 
 const routes: Routes = [
@@ -27,7 +27,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule
   ],
   declarations: [
     LoginComponent,

@@ -8,7 +8,7 @@ import { UserRegistrationService } from './user-registration.service';
 
 import { RegistrationComponent } from './containers/registration/registration.component';
 import { RegistrationDetailsComponent } from './components/registration-details/registration-details.component';
-import { MatButtonModule, MatDatepickerModule, MatNativeDateModule} from '../../../node_modules/@angular/material';
+import { MatButtonModule, MatDatepickerModule, MatNativeDateModule, MatCardModule} from '../../../node_modules/@angular/material';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 
@@ -29,7 +29,8 @@ const routes: Routes = [
     MatInputModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatCardModule
   ],
   declarations: [
     RegistrationComponent,

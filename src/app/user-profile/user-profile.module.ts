@@ -6,7 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UserRegistrationService } from '../user-registration/user-registration.service';
 import { ProfileComponent } from './containers/profile/profile.component';
 import { ProfileDetailsComponent } from './components/profile-details/profile-details.component';
-import { MatButtonModule, MatDatepickerModule, MatNativeDateModule} from '../../../node_modules/@angular/material';
+import { MatButtonModule, MatDatepickerModule, MatNativeDateModule, MatCardModule} from '../../../node_modules/@angular/material';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 
@@ -27,7 +27,8 @@ const routes: Routes = [
     MatInputModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatCardModule
   ],
   declarations: [
     ProfileComponent,

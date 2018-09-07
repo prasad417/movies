@@ -1,87 +1,88 @@
 <div class="container">
     <h3>User Profile</h3>
-    <form [formGroup]="profile" class="form">
-        <div class="form-container">
-            <mat-form-field class="form-input">
-                <input matInput type="text" formControlName="firstName" placeholder="First name *" value="{{ user.firstName }}">
-                <mat-error *ngFor="let validation of validation_messages.firstName">
-                    <mat-error class="error-message" *ngIf="profile.get('firstName').hasError(validation.type) && (profile.get('firstName').dirty || profile.get('firstName').touched)">{{validation.message}}</mat-error>
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field class="form-input">
-                <input matInput type="text" formControlName="middleName" placeholder="Middle name" value="{{ user.middleName }}">
-                <mat-error *ngFor="let validation of validation_messages.middleName">
-                    <mat-error class="error-message" *ngIf="profile.get('middleName').hasError(validation.type) && (profile.get('middleName').dirty || profile.get('middleName').touched)">{{validation.message}}</mat-error>
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field class="form-input">
-                <input matInput type="text" formControlName="lastName" placeholder="Last name *" value="{{ user.lastName }}">
-                <mat-error *ngFor="let validation of validation_messages.lastName">
-                    <mat-error class="error-message" *ngIf="profile.get('lastName').hasError(validation.type) && (profile.get('lastName').dirty || profile.get('lastName').touched)">{{validation.message}}</mat-error>
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field class="form-input">
-                <mat-select placeholder="Gender *" formControlName="gender">
-                    <mat-option *ngFor="let sex of gender" [value]="sex.value">
-                        {{sex.viewValue}}
-                    </mat-option>
-                </mat-select>
-                <mat-error *ngFor="let validation of validation_messages.gender">
-                    <mat-error class="error-message" *ngIf="profile.get('gender').hasError(validation.type) && (profile.get('gender').dirty || profile.get('gender').touched)">{{validation.message}}</mat-error>
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field class="form-input">
-                <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" formControlName="dob"
-                    placeholder="Date of birth *" value="{{ user.dob }}">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-                <mat-error *ngFor="let validation of validation_messages.dob">
-                    <mat-error class="error-message" *ngIf="profile.get('dob').hasError(validation.type) && (profile.get('dob').dirty || profile.get('dob').touched)">{{validation.message}}</mat-error>
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field class="form-input">
-                <input matInput type="text" formControlName="phoneNumber" placeholder="Phone number *" value="{{ user.phoneNumber }}">
-                <mat-error *ngFor="let validation of validation_messages.phoneNumber">
-                    <mat-error class="error-message" *ngIf="profile.get('phoneNumber').hasError(validation.type) && (profile.get('phoneNumber').dirty || profile.get('phoneNumber').touched)">{{validation.message}}</mat-error>
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field class="form-input">
-                <input matInput type="text" formControlName="addressLine1" placeholder="Address line1 *" value="{{ user.addressLine1 }}">
-                <mat-error *ngFor="let validation of validation_messages.addressLine1">
-                    <mat-error class="error-message" *ngIf="profile.get('addressLine1').hasError(validation.type) && (profile.get('addressLine1').dirty || profile.get('addressLine1').touched)">{{validation.message}}</mat-error>
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field class="form-input">
-                <input matInput type="text" formControlName="addressLine2" placeholder="Apt or Suite number" value="{{ user.addressLine2 }}">
-                <mat-error *ngFor="let validation of validation_messages.addressLine2">
-                    <mat-error class="error-message" *ngIf="profile.get('addressLine2').hasError(validation.type) && (profile.get('addressLine2').dirty || profile.get('addressLine2').touched)">{{validation.message}}</mat-error>
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field class="form-input">
-                <input matInput type="text" formControlName="city" placeholder="City *" value="{{ user.city }}">
-                <mat-error *ngFor="let validation of validation_messages.city">
-                    <mat-error class="error-message" *ngIf="profile.get('city').hasError(validation.type) && (profile.get('city').dirty || profile.get('city').touched)">{{validation.message}}</mat-error>
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field class="form-input">
-                <input matInput type="text" formControlName="state" placeholder="State *" value="{{ user.state }}">
-                <mat-error *ngFor="let validation of validation_messages.state">
-                    <mat-error class="error-message" *ngIf="profile.get('state').hasError(validation.type) && (profile.get('state').dirty || profile.get('state').touched)">{{validation.message}}</mat-error>
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field class="form-input">
-                <input matInput type="text" formControlName="zipcode" placeholder="Zipcode *" value="{{ user.zipcode }}">
-                <mat-error *ngFor="let validation of validation_messages.zipcode">
-                    <mat-error class="error-message" *ngIf="profile.get('zipcode').hasError(validation.type) && (profile.get('zipcode').dirty || profile.get('zipcode').touched)">{{validation.message}}</mat-error>
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field class="form-input">
-                <input matInput type="text" formControlName="email" placeholder="Email address *" value="{{ user.email }}">
-                <mat-error *ngFor="let validation of validation_messages.email">
-                    <mat-error class="error-message" *ngIf="profile.get('email').hasError(validation.type) && (profile.get('email').dirty || profile.get('email').touched)">{{validation.message}}</mat-error>
-                </mat-error>
-            </mat-form-field>
-            <!-- <mat-form-field class="form-input">
+    <mat-card>
+        <form [formGroup]="profile" class="form">
+            <div class="form-container">
+                <mat-form-field class="form-input">
+                    <input matInput type="text" formControlName="firstName" placeholder="First name *" value="{{ user.firstName }}">
+                    <mat-error *ngFor="let validation of validation_messages.firstName">
+                        <mat-error class="error-message" *ngIf="profile.get('firstName').hasError(validation.type) && (profile.get('firstName').dirty || profile.get('firstName').touched)">{{validation.message}}</mat-error>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="form-input">
+                    <input matInput type="text" formControlName="middleName" placeholder="Middle name" value="{{ user.middleName }}">
+                    <mat-error *ngFor="let validation of validation_messages.middleName">
+                        <mat-error class="error-message" *ngIf="profile.get('middleName').hasError(validation.type) && (profile.get('middleName').dirty || profile.get('middleName').touched)">{{validation.message}}</mat-error>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="form-input">
+                    <input matInput type="text" formControlName="lastName" placeholder="Last name *" value="{{ user.lastName }}">
+                    <mat-error *ngFor="let validation of validation_messages.lastName">
+                        <mat-error class="error-message" *ngIf="profile.get('lastName').hasError(validation.type) && (profile.get('lastName').dirty || profile.get('lastName').touched)">{{validation.message}}</mat-error>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="form-input">
+                    <mat-select placeholder="Gender *" formControlName="gender">
+                        <mat-option *ngFor="let sex of gender" [value]="sex.value">
+                            {{sex.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngFor="let validation of validation_messages.gender">
+                        <mat-error class="error-message" *ngIf="profile.get('gender').hasError(validation.type) && (profile.get('gender').dirty || profile.get('gender').touched)">{{validation.message}}</mat-error>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="form-input">
+                    <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" formControlName="dob" placeholder="Date of birth *"
+                        value="{{ user.dob }}">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngFor="let validation of validation_messages.dob">
+                        <mat-error class="error-message" *ngIf="profile.get('dob').hasError(validation.type) && (profile.get('dob').dirty || profile.get('dob').touched)">{{validation.message}}</mat-error>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="form-input">
+                    <input matInput type="text" formControlName="phoneNumber" placeholder="Phone number *" value="{{ user.phoneNumber }}">
+                    <mat-error *ngFor="let validation of validation_messages.phoneNumber">
+                        <mat-error class="error-message" *ngIf="profile.get('phoneNumber').hasError(validation.type) && (profile.get('phoneNumber').dirty || profile.get('phoneNumber').touched)">{{validation.message}}</mat-error>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="form-input">
+                    <input matInput type="text" formControlName="addressLine1" placeholder="Address line1 *" value="{{ user.addressLine1 }}">
+                    <mat-error *ngFor="let validation of validation_messages.addressLine1">
+                        <mat-error class="error-message" *ngIf="profile.get('addressLine1').hasError(validation.type) && (profile.get('addressLine1').dirty || profile.get('addressLine1').touched)">{{validation.message}}</mat-error>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="form-input">
+                    <input matInput type="text" formControlName="addressLine2" placeholder="Apt or Suite number" value="{{ user.addressLine2 }}">
+                    <mat-error *ngFor="let validation of validation_messages.addressLine2">
+                        <mat-error class="error-message" *ngIf="profile.get('addressLine2').hasError(validation.type) && (profile.get('addressLine2').dirty || profile.get('addressLine2').touched)">{{validation.message}}</mat-error>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="form-input">
+                    <input matInput type="text" formControlName="city" placeholder="City *" value="{{ user.city }}">
+                    <mat-error *ngFor="let validation of validation_messages.city">
+                        <mat-error class="error-message" *ngIf="profile.get('city').hasError(validation.type) && (profile.get('city').dirty || profile.get('city').touched)">{{validation.message}}</mat-error>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="form-input">
+                    <input matInput type="text" formControlName="state" placeholder="State *" value="{{ user.state }}">
+                    <mat-error *ngFor="let validation of validation_messages.state">
+                        <mat-error class="error-message" *ngIf="profile.get('state').hasError(validation.type) && (profile.get('state').dirty || profile.get('state').touched)">{{validation.message}}</mat-error>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="form-input">
+                    <input matInput type="text" formControlName="zipcode" placeholder="Zipcode *" value="{{ user.zipcode }}">
+                    <mat-error *ngFor="let validation of validation_messages.zipcode">
+                        <mat-error class="error-message" *ngIf="profile.get('zipcode').hasError(validation.type) && (profile.get('zipcode').dirty || profile.get('zipcode').touched)">{{validation.message}}</mat-error>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="form-input">
+                    <input matInput type="text" formControlName="email" placeholder="Email address *" value="{{ user.email }}">
+                    <mat-error *ngFor="let validation of validation_messages.email">
+                        <mat-error class="error-message" *ngIf="profile.get('email').hasError(validation.type) && (profile.get('email').dirty || profile.get('email').touched)">{{validation.message}}</mat-error>
+                    </mat-error>
+                </mat-form-field>
+                <!-- <mat-form-field class="form-input">
                 <input matInput type="password" formControlName="password" placeholder="Password *">
                 <mat-error *ngFor="let validation of validation_messages.password">
                     <mat-error class="error-message" *ngIf="profile.get('password').hasError(validation.type) && (profile.get('password').dirty || profile.get('password').touched)">{{validation.message}}</mat-error>
@@ -90,6 +91,7 @@
              <div class='formbutton'>
                 <button mat-raised-button color="primary" type="submit" [disabled]="!profile.valid"><b>Save</b></button>
             </div> -->
-        </div>
-    </form>
+            </div>
+        </form>
+    </mat-card>
 </div>
