@@ -1,21 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+
+import { AuthService } from './../../../user-login/auth.service';
+import { UserRegistrationService } from './../../../user-registration/user-registration.service';
+
+import { User } from './../../../user-registration/models/user.interface';
+import { Gender } from './../../../user-registration/models/gender.interface';
+
 import { Router } from '@angular/router';
-import { User } from './../../models/user.interface';
-import { Gender } from './../../models/gender.interface';
-
-import { UserRegistrationService } from './../../user-registration.service';
-import { first } from 'rxjs/operators';
-
 
 @Component({
-  selector: 'app-registration',
-  templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.scss']
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.scss']
 })
-export class RegistrationComponent implements OnInit {
+export class ProfileComponent implements OnInit {
 
-  user: FormGroup;
+  user: User;
+  profile: FormGroup;
 
   gender: Gender[] = [
     {value: 'male', viewValue: 'Male'},
@@ -30,8 +32,7 @@ export class RegistrationComponent implements OnInit {
   minDate = new Date(this.minYear, this.month, this.day);
   maxDate = new Date(this.maxYear, this.month, this.day);
 
-
-  constructor(private userRegistration: UserRegistrationService, private router: Router) {}
+  constructor(private userRegistration: UserRegistrationService, private authService: AuthService, private router: Router) {}
 
   validation_messages = {
     'firstName' : [
@@ -103,7 +104,11 @@ export class RegistrationComponent implements OnInit {
   };
 
   ngOnInit() {
-    this.user = new FormGroup({
+    this.user = this.authService.getCurrentUser();
+    if (this.user === null) {
+      this.router.navigate(['/login']);
+    }
+    this.profile = new FormGroup({
       firstName: new FormControl('', Validators.compose([
         Validators.required,
         Validators.minLength(1),
@@ -181,23 +186,7 @@ export class RegistrationComponent implements OnInit {
         Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&#^-_])[A-Za-z\d$@$!%*?&#^-_].{8,}')
       ]))
     });
-  }
-
-  onSubmit({ value, valid }: { value: User, valid: boolean }) {
-    this.userRegistration.register(value)
-      .pipe(first())
-      .subscribe(
-        data => {
-          this.router.navigate(['/login']);
-        },
-        error => {
-            console.log();
-        }
-      );
-  }
-
-  reset() {
-    this.user.reset();
+    this.profile.get('gender').setValue(this.user.gender);
   }
 
 }

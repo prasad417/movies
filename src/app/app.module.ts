@@ -11,6 +11,7 @@ import { MovieModule } from './movie/movie.module';
 import { SearchModule } from './search/search.module';
 import { UserRegistrationModule } from './user-registration/user-registration.module';
 import { UserLoginModule } from './user-login/user-login.module';
+import { UserProfileModule } from './user-profile/user-profile.module';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -48,6 +49,7 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
     SearchModule,
     UserRegistrationModule,
     UserLoginModule,
+    UserProfileModule,
     // Routing modules
     AppRoutingModule
   ],
