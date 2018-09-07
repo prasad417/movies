@@ -16,6 +16,8 @@ import { AuthService } from '../../auth.service';
 export class LoginComponent implements OnInit {
 
   userlogin: FormGroup;
+  loginSucess: boolean;
+  errorMessage: string;
 
   validation_messages = {
     'email' : [
@@ -66,7 +68,8 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('/account');
         window.location.reload(true);
       }, err => {
-        console.log(err);
+        this.loginSucess = false;
+        this.errorMessage = 'Please check username/password.';
       });
   }
 
