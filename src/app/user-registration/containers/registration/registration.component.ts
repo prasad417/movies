@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from './../../models/user.interface';
+import { Gender } from './../../models/gender.interface';
 
 import { UserRegistrationService } from './../../user-registration.service';
 import { first } from 'rxjs/operators';
@@ -15,6 +16,20 @@ import { first } from 'rxjs/operators';
 export class RegistrationComponent implements OnInit {
 
   user: FormGroup;
+
+  gender: Gender[] = [
+    {value: 'male', viewValue: 'Male'},
+    {value: 'female', viewValue: 'Female'},
+  ];
+
+  now = new Date();
+  maxYear = (this.now.getFullYear() - 18);
+  minYear = (this.now.getFullYear() - 99);
+  month = this.now.getMonth();
+  day = this.now.getDate();
+  minDate = new Date(this.minYear, this.month, this.day);
+  maxDate = new Date(this.maxYear, this.month, this.day);
+
 
   constructor(private userRegistration: UserRegistrationService, private router: Router) {}
 
@@ -35,6 +50,12 @@ export class RegistrationComponent implements OnInit {
       { type: 'minlength', message: 'Last name must be at least 1 characters long' },
       { type: 'maxlength', message: 'Last name cannot be more than 25 characters long' },
       { type: 'pattern', message: 'Last name must contain only letters' }
+    ],
+    'gender': [
+      { type: 'required', message: 'Please select gender.' }
+    ],
+    'dob': [
+      { type: 'required', message: 'Please select date.' }
     ],
     'phoneNumber' : [
       { type: 'required', message: 'Phone number is required' },
@@ -87,18 +108,24 @@ export class RegistrationComponent implements OnInit {
         Validators.required,
         Validators.minLength(1),
         Validators.maxLength(25),
-        Validators.pattern('[a-zA-Z]+')
+        Validators.pattern('[a-zA-Z ]+')
       ])),
       middleName: new FormControl('', Validators.compose([
         Validators.minLength(1),
         Validators.maxLength(25),
-        Validators.pattern('[a-zA-Z]+')
+        Validators.pattern('[a-zA-Z ]+')
       ])),
       lastName: new FormControl('', Validators.compose([
         Validators.required,
         Validators.minLength(1),
         Validators.maxLength(25),
-        Validators.pattern('[a-zA-Z]+')
+        Validators.pattern('[a-zA-Z ]+')
+      ])),
+      dob: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      gender: new FormControl('', Validators.compose([
+        Validators.required
       ])),
       phoneNumber: new FormControl('', Validators.compose([
         Validators.required,
@@ -157,7 +184,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   onSubmit({ value, valid }: { value: User, valid: boolean }) {
-    // console.log(value, valid);
+    console.log(value, valid);
     this.userRegistration.register(value)
       .pipe(first())
       .subscribe(

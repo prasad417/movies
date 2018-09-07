@@ -21,6 +21,24 @@
       </mat-error>
     </mat-form-field>
     <mat-form-field class="form-input">
+        <mat-select placeholder="Gender *" formControlName="gender">
+            <mat-option *ngFor="let sex of gender" [value]="sex.value">
+                {{sex.viewValue}}
+              </mat-option>
+        </mat-select>
+        <mat-error *ngFor="let validation of validation_messages.gender">
+          <mat-error class="error-message" *ngIf="user.get('gender').hasError(validation.type) && (user.get('gender').dirty || user.get('gender').touched)">{{validation.message}}</mat-error>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-input">
+      <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" formControlName="dob" placeholder="Date of birth *">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngFor="let validation of validation_messages.dob">
+        <mat-error class="error-message" *ngIf="user.get('dob').hasError(validation.type) && (user.get('dob').dirty || user.get('dob').touched)">{{validation.message}}</mat-error>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-input">
       <input matInput type="text" formControlName="phoneNumber" placeholder="Phone number *">
       <mat-error *ngFor="let validation of validation_messages.phoneNumber">
         <mat-error class="error-message" *ngIf="user.get('phoneNumber').hasError(validation.type) && (user.get('phoneNumber').dirty || user.get('phoneNumber').touched)">{{validation.message}}</mat-error>
